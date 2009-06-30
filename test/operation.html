@@ -1,0 +1,29 @@
+<html>
+<head>
+<script type="text/javascript" src="../jsunit-framework/app/jsUnitCore.js"></script>
+<script type="text/javascript" src="../snippets/operation.js"></script>
+<script type="text/javascript">
+
+
+var sum = null;
+var subtraction = null;
+
+function setUp() {
+    sum = createOperation('+', 2, 2);
+    subtraction = createOperation('-', 2, 2);
+}
+
+function tearDown() {
+    sum = null
+    subtraction = null;
+}
+
+function testCalculate() {
+    assertEquals('it should calculate the sum', 4, sum.calculate());
+    assertEquals('it should calculate the subtraction', 0, subtraction.calculate());
+}
+
+
+</script>
+</head>
+</html>
