@@ -1,20 +1,25 @@
-var MathOperation = function(_a, _b) {
-    this.a = _a;
-    this.b = _b;
-    this.calculate = function() {}; 
+var MathOperation = function(a, b) {
+    this._a = a;
+    this._b = b;
+    this.calculate = function() { };
 };
+
  
-var Sum = function(_a, _b) {
-    this.base = MathOperation;
-    this.base(_a, _b);
-    this.calculate = function() {return this.a + this.b};
+var Sum = function(a, b) {
+    MathOperation.call(this, a, b);
+    this.calculate = function() { return this._a + this._b };
 };
- 
-var Subtraction = function(_a, _b) {
-    this.base = MathOperation;
-    this.base(_a, _b);
-    this.calculate = function() {return this.a - this.b};
+
+Sum.prototype = new MathOperation();
+
+
+var Subtraction = function(a, b) {
+    MathOperation.call(this, a, b);
+    this.calculate = function() { return this._a - this._b };
 };
+
+Subtraction.prototype = new MathOperation();
+
 
 function createMathOperation(operator, a, b) {
     switch(operator) {
